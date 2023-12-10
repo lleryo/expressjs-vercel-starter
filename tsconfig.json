@@ -4,7 +4,7 @@
     "target": "es6",
     "lib": ["esnext"],
     "module": "commonjs",
-    "rootDir": "src",
+    "rootDir": "app",
     "sourceMap": true,
     "typeRoots": ["./@types", "./node_modules/@types"],
     "resolveJsonModule": true,
@@ -29,7 +29,7 @@
     "declarationMap": true
   },
   "include": [
-    "src/**/*.ts"
+    "app/**/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -4,9 +4,9 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import path from 'path';
 import helmet from 'helmet';
-import Files from '../src/routes/files';
-import File from '../src/routes/file';
-import TTS from '../src/routes/tts';
+import TTS from './src/routes/tts';
+import File from './src/routes/file';
+import Files from './src/routes/files';
 
 const PORT = process.env.PORT || 8000;
 
@@ -20,6 +20,8 @@ server.use(helmet());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 server.use(express.static(path.join(__dirname, 'public')));
+
+console.log('Dir: ', path.join(__dirname, 'public'));
 
 server.use('/api/v1/files', Files);
 server.use('/api/v1/file', File);
