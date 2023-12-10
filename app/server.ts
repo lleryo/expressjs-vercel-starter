@@ -11,26 +11,14 @@ const PORT = process.env.PORT || 8000;
 
 const server = express();
 
-const options = {
-  dotfiles: 'ignore',
-  etag: false,
-  extensions: ['htm', 'html'],
-  index: false,
-  maxAge: '1d',
-  redirect: false,
-  setHeaders(res: express.Response) {
-    res.set('x-static-timestamp', Date.now().toString());
-  },
-};
-
 server.use(morgan('dev'));
 server.use(cors());
 server.use(helmet());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
-server.use(express.static(path.join(__dirname, 'public'), options));
+server.use(express.static(path.join(__dirname, 'public')));
 
-console.log('Dir: ', express.static(path.join(__dirname, 'public'), options));
+console.log('Dir: ', express.static(path.join(__dirname, 'public')));
 
 server.get('/api', (_req, res: express.Response) => {
   res.setHeader('Content-Type', 'application/json');
