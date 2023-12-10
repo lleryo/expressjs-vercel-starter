@@ -8,10 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
-    "build": "tsc",
     "dev": "nodemon ./src/server.ts",
-    "vercel-build": "echo hello",
-    "start": "node ./build/server.js"
+    "vercel-build": "echo Done running vercel-build."
   },
   "keywords": [],
   "author": "",
