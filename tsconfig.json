@@ -1,33 +1,17 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "es6",
-    "lib": ["esnext"],
     "module": "commonjs",
-    "rootDir": "app",
-    "sourceMap": true,
-    "typeRoots": ["./@types", "./node_modules/@types"],
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "outDir": "build",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noEmitOnError": true,
     "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "declarationMap": true
+    "target": "es6",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"]
+    }
   },
-  "include": ["app/**/*.ts", "app/public/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["./src/**/*"]
 }
