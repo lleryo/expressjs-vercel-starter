@@ -28,10 +28,6 @@
     "declaration": true,
     "declarationMap": true
   },
-  "include": [
-    "app/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["app/**/*.ts", "app/public/**/*"],
+  "exclude": ["node_modules"]
 }
