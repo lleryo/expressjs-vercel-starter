@@ -49,6 +49,120 @@ Express.js Vercel Starter is designed to streamline the development and deployme
 
 ```
 
+## Environment Variables
+
+The following environment variables are utilized:
+
+```sh
+AWS_ACCESS_KEY_ID=''
+AWS_SECRET_ACCESS_KEY=''
+AWS_REGION=''
+
+SANITY_SECRET_TOKEN=''
+SANITY_API_VERSION=''
+SANITY_PROJECT_ID=''
+SANITY_DATASET=''
+```
+
+
+## API Endpoint Overview
+
+The project provides the following API endpoints, each serving a specific purpose:
+
+### Files Endpoint: `/api/v1/files`
+
+This endpoint handles operations related to files. Users can interact with the API to upload multiples files and get URL from the files uploaded.
+
+### File Endpoint: `/api/v1/file`
+
+The file endpoint is responsible for single file uploads. It allows users to one file and get URL of the file uploaded.
+
+### Text-to-Speech (TTS) Endpoint: `/api/v1/tts`
+
+The TTS endpoint provides functionality for converting text to speech. Users can send text data to this endpoint, and the server will respond with an audio file generated from the provided text.
+
+These API endpoints collectively form the core functionality of the Express.js Vercel Starter, offering a flexible and scalable solution for file and text processing.
+
+
+## Packages Used
+
+The project utilizes the following packages:
+
+### Development Dependencies
+
+- **@types/cors:**
+  - Provides TypeScript type definitions for the `cors` package, enabling type checking and editor support.
+
+- **@types/express:**
+  - Offers TypeScript type definitions for the Express.js framework, enhancing code quality and development experience.
+
+- **@types/helmet:**
+  - Provides TypeScript type definitions for the `helmet` package, ensuring type safety and code completion.
+
+- **@types/morgan:**
+  - Offers TypeScript type definitions for the `morgan` package, enhancing the developer experience with type-aware code.
+
+- **@types/multer:**
+  - Provides TypeScript type definitions for the `multer` package, enabling type-safe interactions with the file upload middleware.
+
+- **@types/node:**
+  - Supplies TypeScript type definitions for Node.js core modules, facilitating type-checking for Node.js-specific functionality.
+
+- **@typescript-eslint/eslint-plugin:**
+  - Integrates ESLint with TypeScript, enabling linting for TypeScript code and enforcing coding standards.
+
+- **autoprefixer:**
+  - A PostCSS plugin that automatically adds vendor prefixes to CSS properties, ensuring cross-browser compatibility.
+
+- **eslint:**
+  - A pluggable linting utility for JavaScript and TypeScript, enforcing code style and identifying potential issues.
+
+- **eslint-config-standard-with-typescript:**
+  - An ESLint configuration that combines the StandardJS style guide with TypeScript support, maintaining code consistency.
+
+- **eslint-plugin-import:**
+  - ESLint plugin that provides linting rules for ES6 import statements, ensuring correct usage and preventing common mistakes.
+
+- **eslint-plugin-n:**
+  - An ESLint plugin that enforces version-specific Node.js rules, improving compatibility and preventing usage of unsupported features.
+
+- **eslint-plugin-promise:**
+  - ESLint plugin that adds linting rules related to JavaScript Promises, promoting best practices and preventing common errors.
+
+- **nodemon:**
+  - Monitors files for changes and automatically restarts the Node.js application during development, improving the development workflow.
+
+- **typescript:** 
+  - The TypeScript programming language compiler, enabling the use of TypeScript in the project for static typing and improved code quality.
+
+### Dependencies
+
+- **aws-sdk:**
+  - The AWS SDK for JavaScript, enabling interaction with various Amazon Web Services (AWS) from the Node.js environment.
+
+- **cors:** 
+  - Middleware for handling Cross-Origin Resource Sharing (CORS) in Express.js applications, allowing controlled access to resources from different origins.
+
+- **dotenv:**
+  - A zero-dependency module that loads environment variables from a `.env` file into `process.env`, simplifying configuration management.
+
+- **express:**
+  - Fast, unopinionated, minimalist web framework for Node.js, providing a robust foundation for building web applications and APIs.
+
+- **helmet:**
+  - A collection of middleware functions to secure Express.js applications by setting various HTTP headers, enhancing security.
+
+- **morgan:**
+  - HTTP request logger middleware for Node.js, providing detailed logging information during development and debugging.
+
+- **multer:**
+  - A middleware for handling `multipart/form-data`, primarily used for file uploads in Express.js applications.
+
+- **next-sanity:** 
+  - A Next.js utility for integrating with the Sanity CMS, simplifying the process of fetching data from Sanity in Next.js applications.
+
+
+
 ## Configuration
 
 No configuration is needed from the user; everything has been set up automatically. Users can modify the entire codebase and add more files to the public directory. Leave the `api` directory as is.
