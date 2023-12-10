@@ -15,8 +15,7 @@ export const PostTTS = async (request: Request, response: Response) => {
     const { plainText } = request.body;
 
     if (!plainText) {
-      response.status(400).json({ error: 'No text provided' });
-      return;
+      return response.status(400).json({ error: 'No text provided' });
     }
 
     const polly = new AWS.Polly({
@@ -56,10 +55,10 @@ export const PostTTS = async (request: Request, response: Response) => {
 
     console.log('url: ', url);
 
-    response.json({ url });
+    return response.status(201).json({ url });
   } catch (error) {
     const msg = 'Internal server error:';
     console.error(msg, error);
-    response.status(500).json({ error: msg, success: false });
+    return response.status(500).json({ error: msg, success: false });
   }
 };
