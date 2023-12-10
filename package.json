@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
-    "build": "rimraf ./build && npx tsc && cp -R ./src/* ./build && mkdirp ./build",
+    "build": "rimraf ./build && npx tsc && mkdirp ./build",
     "dev": "nodemon",
     "vercel-build": "tsup app --clean --format cjs --env.NODE_ENV production --env.DEPLOYMENT_ENV vercel --out-dir api",
     "start": "node ./build/server.js"
