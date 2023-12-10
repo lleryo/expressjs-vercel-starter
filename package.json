@@ -10,7 +10,7 @@
     "lint-fix": "eslint . --ext .ts --fix",
     "build": "rimraf ./build && npx tsc && mkdirp ./build/src && mkdirp ./build/public && cp -R ./app/public/* ./build/public",
     "dev": "nodemon",
-    "vercel-build": "tsup app --clean --format cjs --env.NODE_ENV production --env.DEPLOYMENT_ENV vercel --out-dir api",
+    "vercel-build": "tsup app --clean --format cjs --env.NODE_ENV production --env.DEPLOYMENT_ENV vercel --out-dir api --loader .ico=file --loader .html=file",
     "start": "node ./build/server.js"
   },
   "keywords": [],
