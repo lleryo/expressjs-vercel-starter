@@ -57,7 +57,7 @@
         try {
           loadingSpan.style.display = 'inline'; // Show loading indicator
 
-          const response = await fetch('http://localhost:8000/api/v1/file', {
+          const response = await fetch('/api/v1/file', {
             method: 'POST',
             body: formData,
           });
@@ -86,7 +86,8 @@
         try {
           loadingSpan.style.display = 'inline'; // Show loading indicator
 
-          const response = await fetch('http://localhost:8000/api/v1/files', {
+
+          const response = await fetch('/api/v1/files', {
             method: 'POST',
             body: formData,
           });
@@ -110,7 +111,7 @@
         try {
           loadingSpan.style.display = 'inline'; // Show loading indicator
 
-          const response = await fetch('http://localhost:8000/api/v1/tts', {
+          const response = await fetch('/api/v1/tts', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
