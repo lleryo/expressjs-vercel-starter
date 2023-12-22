@@ -4,6 +4,6 @@ import { PostFiles } from '../controllers/files';
 
 const router = express.Router();
 
-router.post('/', upload.array('files', 5), PostFiles);
+router.post('/', upload.array('files', 10), PostFiles);
 
 export = router;

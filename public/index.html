@@ -5,17 +5,129 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="..." />
-  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="./styles/globals.css">
   <title>File To URL</title>
 </head>
 
-<body class='main-body'>
-  <p class="">Hello World</p>
-</body>
+<body class='wrapper'>
+  <p class="underline">Hello World</p>
+  <div class='box'>
 
-<script>
-  console.log('Working');
-</script>
+    <!-- Single File Upload Form -->
+    <form id="singleFileUploadForm" enctype="multipart/form-data">
+      <label class='text-xl' for="singleFile">Choose file:</label>
+      <input type="file" name="singleFile" id="singleFile" required />
+      <button type="button" onclick="uploadSingleFile()">Upload Single File</button>
+      <span class="loading" id="singleFileLoading">Uploading...</span>
+    </form>
+
+    <!-- Multiple File Upload Form -->
+    <form id="multipleFileUploadForm" enctype="multipart/form-data">
+      <label for="multipleFiles">Choose files:</label>
+      <input type="file" name="multipleFiles" id="multipleFiles" multiple required />
+      <button type="button" onclick="uploadMultipleFiles()">Upload Multiple Files</button>
+      <span class="loading" id="multipleFilesLoading">Uploading...</span>
+    </form>
+
+    <!-- Text to Speech Form -->
+    <form id="ttsForm">
+      <label for="textToSpeech">Text to Speech:</label>
+      <input type="text" name="textToSpeech" id="textToSpeech" required />
+      <button type="button" onclick="convertToSpeech()">Convert to Speech</button>
+      <span class="loading" id="ttsLoading">Converting...</span>
+    </form>
+
+    <div id="result"></div>
+
+  </div>
+
+  <script>
+
+
+    async function uploadSingleFile() {
+      const fileInput = document.getElementById('singleFile');
+      const file = fileInput.files[0];
+      const loadingSpan = document.getElementById('singleFileLoading');
+
+      if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          loadingSpan.style.display = 'inline'; // Show loading indicator
+
+          const response = await fetch('http://localhost:8000/api/v1/file', {
+            method: 'POST',
+            body: formData,
+          });
+
+          const data = await response.json();
+          document.getElementById('result').innerHTML = `Single file uploaded. URL: ${data.url}`;
+        } catch (error) {
+          console.error('Error uploading single file:', error);
+        } finally {
+          loadingSpan.style.display = 'none'; // Hide loading indicator
+        }
+      }
+    }
+
+    async function uploadMultipleFiles() {
+      const fileInput = document.getElementById('multipleFiles');
+      const files = fileInput.files;
+      const loadingSpan = document.getElementById('multipleFilesLoading');
+
+      if (files.length > 0) {
+        const formData = new FormData();
+        for (const file of files) {
+          formData.append('files', file);
+        }
+
+        try {
+          loadingSpan.style.display = 'inline'; // Show loading indicator
+
+          const response = await fetch('http://localhost:8000/api/v1/files', {
+            method: 'POST',
+            body: formData,
+          });
+
+          const data = await response.json();
+          document.getElementById('result').innerHTML = `Multiple files uploaded. URLs: ${data.url.join(', ')}`;
+        } catch (error) {
+          console.error('Error uploading multiple files:', error);
+        } finally {
+          loadingSpan.style.display = 'none'; // Hide loading indicator
+        }
+      }
+    }
+
+    async function convertToSpeech() {
+      const textInput = document.getElementById('textToSpeech');
+      const text = textInput.value;
+      const loadingSpan = document.getElementById('ttsLoading');
+
+      if (text) {
+        try {
+          loadingSpan.style.display = 'inline'; // Show loading indicator
+
+          const response = await fetch('http://localhost:8000/api/v1/tts', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ plainText: text }),
+          });
+
+          const data = await response.json();
+          document.getElementById('result').innerHTML = `Text-to-Speech generated. URL: ${data.url}`;
+        } catch (error) {
+          console.error('Error converting to speech:', error);
+        } finally {
+          loadingSpan.style.display = 'none'; // Hide loading indicator
+        }
+      }
+    }
+  </script>
+</body>
 
 </html>
